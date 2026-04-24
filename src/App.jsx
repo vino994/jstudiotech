@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
-
+import vinoth from "./assets/vinoth.png";
+import arun from "./assets/arun.png";
+import john from "./assets/john.png";
 /* ══════════════════════════════════════════════
    DESIGN TOKENS — Purple / Blue / Black
 ══════════════════════════════════════════════ */
@@ -663,7 +665,7 @@ const TEAM = [
   {
     name: "Vinothkumar Sanjeevi",
     role: "CEO & Founder",
-    img: "https://api.dicebear.com/8.x/avataaars/svg?seed=Vinothkumar&backgroundColor=b6e3f4&hair=short&skinColor=d08b5b",
+    img: vinoth,
     emoji: "👨‍💼",
     initials: "VS",
     color: C.purple,
@@ -675,7 +677,7 @@ const TEAM = [
   {
     name: "Arunkumar",
     role: "Co-Founder & Marketing Head",
-    img: "https://api.dicebear.com/8.x/avataaars/svg?seed=Arunkumar&backgroundColor=ffdfbf&hair=short&skinColor=ae5d29",
+    img: arun,
     emoji: "🎯",
     initials: "AK",
     color: C.blue,
@@ -687,8 +689,8 @@ const TEAM = [
   {
     name: "John",
     role: "Lead Developer",
-    img: "https://api.dicebear.com/8.x/avataaars/svg?seed=John2024&backgroundColor=c0aede&hair=short&skinColor=f8d25c",
-    emoji: "💻",
+    img: john,
+   
     initials: "JN",
     color: C.cyan,
     desc: "Full-stack architect building scalable applications with React, TypeScript, and Node.js. Leads technical implementation across all development projects.",
@@ -748,33 +750,41 @@ function TeamCard({ m }) {
         boxShadow: hov ? `0 24px 60px rgba(0,0,0,0.4), 0 0 30px ${m.color}25` : "none",
       }}>
       {/* Avatar */}
-      <div style={{ position: "relative", width: 110, height: 110, margin: "0 auto 20px" }}>
-        <div style={{
-          width: 110, height: 110, borderRadius: "50%",
-          background: `linear-gradient(135deg, ${m.color}40, ${m.color}15)`,
-          border: `3px solid ${m.color}60`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 48, overflow: "hidden",
-          boxShadow: `0 0 30px ${m.color}35`,
-          transition: "box-shadow 0.3s",
-          ...(hov && { boxShadow: `0 0 50px ${m.color}55` }),
-        }}>
-          {/* Stylized avatar using emoji + gradient background */}
-          <div style={{
-            width: "100%", height: "100%",
-            background: `radial-gradient(circle at 40% 35%, ${m.color}50, ${m.color}20)`,
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          }}>
-            <div style={{ fontSize: 42 }}>{m.emoji}</div>
-          </div>
-        </div>
-        {/* Role dot */}
-        <div style={{
-          position: "absolute", bottom: 4, right: 4, width: 22, height: 22,
-          borderRadius: "50%", background: m.color, border: `3px solid ${C.cardBg}`,
-          boxShadow: `0 0 10px ${m.color}`,
-        }} />
-      </div>
+ {/* Avatar */}
+<div style={{ position: "relative", width: 110, height: 110, margin: "0 auto 20px" }}>
+  <div style={{
+    width: 110,
+    height: 110,
+    borderRadius: "50%",
+    border: `3px solid ${m.color}60`,
+    overflow: "hidden",
+    boxShadow: hov ? `0 0 50px ${m.color}55` : `0 0 30px ${m.color}35`,
+    transition: "box-shadow 0.3s",
+  }}>
+    <img
+      src={m.img}
+      alt={m.name}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
+  </div>
+
+  {/* Role dot */}
+  <div style={{
+    position: "absolute",
+    bottom: 4,
+    right: 4,
+    width: 22,
+    height: 22,
+    borderRadius: "50%",
+    background: m.color,
+    border: `3px solid ${C.cardBg}`,
+    boxShadow: `0 0 10px ${m.color}`,
+  }} />
+</div>
 
       <h3 style={{ fontFamily: "'Clash Display',sans-serif", fontSize: 18, fontWeight: 600, color: "#fff", margin: "0 0 6px" }}>{m.name}</h3>
       <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: m.color, fontWeight: 700, fontSize: 13, marginBottom: 16, letterSpacing: 0.5 }}>{m.role}</div>
